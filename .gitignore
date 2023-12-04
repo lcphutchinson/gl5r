@@ -1,0 +1,3 @@
+src/gl5r/config/.env
+src/gl5r/mongoio/dbcore.py
+src/gl5r/mongoio/mongotest.py

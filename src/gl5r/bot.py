@@ -1,23 +1,18 @@
+from discord.ext.commands import bot
+from config.global_settings import GlobalSettings
 from config.intents import get_intents
-import config.global_settings as config
-import discord as dpy
 
 def main():
-    client = dpy.Client(intents=get_intents())
-    my_settings = config.GlobalSettings()
-
-    @client.event
-    async def on_ready():
-        return
     
-    @client.event
-    async def on_message(message):
-        pass
-    #    await route(message)
-        
+    my_settings = GlobalSettings()
 
-    token = my_settings.get("bot_token")
-    client.run(token)
+    gl5r = bot.Bot(
+        command_prefix = '/',
+        intents = get_intents(),
+        )
+    
+    token = my_settings.get('bot_token')
+    gl5r.run(token)
 
-if __name__=="__main__":
+if __name__=='__main__':
     main()

@@ -1,35 +1,33 @@
-"""docstring"""
-
-import discord as dpy
+from discord import Intents
 
 def get_intents():
     
-    intents = dpy.Intents.default()
-    intents.auto_moderation                 = False
-    intents.auto_moderation_configuration   = False
-    intents.auto_moderation_execution       = False
-    intents.bans                            = False
-    intents.dm_messages                     = False
-    intents.dm_reactions                    = False
-    intents.dm_typing                       = False
-    intents.emojis                          = False
-    intents.emojis_and_stickers             = False
-    intents.guild_messages                  = False
-    intents.guild_reactions                 = False
-    intents.guild_scheduled_events          = False
-    intents.guild_typing                    = False
-    intents.guilds                          = False
-    intents.integrations                    = False
-    intents.invites                         = False
-    intents.members                         = False     # Privileged Intent
-    intents.message_content                 = True      # Privileged Intent
-    intents.messages                        = False
-    intents.moderation                      = False
-    intents.presences                       = False     # Privileged Intent
-    intents.reactions                       = False
-    intents.typing                          = False
-    intents.value                           = False
-    intents.voice_states                    = False
-    intents.webhooks                        = False
+    my_intents = Intents.default()
+    my_intents.auto_moderation                  = False
+    my_intents.auto_moderation_configuration    = False
+    my_intents.auto_moderation_execution        = False
+    my_intents.bans                             = False
+    my_intents.dm_messages                      = False
+    my_intents.dm_reactions                     = False
+    my_intents.dm_typing                        = False
+    my_intents.emojis                           = False
+    my_intents.emojis_and_stickers              = False
+    my_intents.guild_messages                   = False
+    my_intents.guild_reactions                  = False
+    my_intents.guild_scheduled_events           = False
+    my_intents.guild_typing                     = False
+    my_intents.guilds                           = False
+    my_intents.integrations                     = False
+    my_intents.invites                          = False
+    my_intents.members                          = False     # Privileged Intent
+    my_intents.message_content                  = True      # Privileged Intent
+    my_intents.messages                         = False
+    my_intents.moderation                       = False
+    my_intents.presences                        = False     # Privileged Intent
+    my_intents.reactions                        = False
+    my_intents.typing                           = False
+    my_intents.value                            = False
+    my_intents.voice_states                     = False
+    my_intents.webhooks                         = False
 
-    return intents
+    return my_intents

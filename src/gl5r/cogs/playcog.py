@@ -1,0 +1,18 @@
+from discord.ext import commands
+
+class PlayCog(commands.Cog):
+
+    def __init__(self, bot : commands.bot.Bot):
+        self.bot = bot
+
+    def __new__(cls, bot):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(PlayCog, cls).__new__(cls, bot)
+        return cls.instance
+    
+    @commands.command
+    async def hello(self, ctx):
+        """Says Hello"""
+        ctx.send("Hello!")
+
+    

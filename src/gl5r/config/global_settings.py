@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 from os import environ as env
 
 class GlobalSettings:
-    _instance = None
     settings_dict = None
 
     def __init__(self):

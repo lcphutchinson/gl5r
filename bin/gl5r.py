@@ -1,3 +1,4 @@
-import src.gl5r.bot as gl5r
+import context
+from src.gl5r import launcher
 
-gl5r.main()
+launcher.main()

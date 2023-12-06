@@ -1,3 +1,5 @@
+# pre-doc: prototype cog for general play commands. Eventually, commands without
+# special context or privilege requirements will launch out of this cog.
 from discord.ext import commands
 
 class PlayCog(commands.Cog):

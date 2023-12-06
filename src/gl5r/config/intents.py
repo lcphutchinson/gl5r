@@ -26,7 +26,6 @@ def get_intents():
     my_intents.presences                        = False     # Privileged Intent
     my_intents.reactions                        = False
     my_intents.typing                           = False
-    my_intents.value                            = False
     my_intents.voice_states                     = False
     my_intents.webhooks                         = False
 

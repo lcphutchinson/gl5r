@@ -1,3 +1,4 @@
+# pre-doc: configure and verify proper function of system components from this script, then launch the bot.
 from config.global_settings import GlobalSettings
 from game_lieutenant import GameLieutenant
 

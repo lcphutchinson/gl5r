@@ -15,4 +15,6 @@ class PlayCog(commands.Cog):
         """Says Hello"""
         ctx.send("Hello!")
 
+    async def register(self):
+        self.bot.add_cog(self, self.bot)
     

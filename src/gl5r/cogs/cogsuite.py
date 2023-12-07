@@ -1,7 +1,7 @@
 # pre-doc: provide logic here for initializing and registering each cog, so that
 # GameLieutenant only needs one call to handle all its cog registration
 from discord.ext.commands.bot import Bot
-from playcog import PlayCog
+from gl5r.cogs.testcog import PlayCog
 
 class Cogsuite():
 

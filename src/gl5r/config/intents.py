@@ -21,7 +21,7 @@ def get_intents():
     my_intents.invites                          = False
     my_intents.members                          = False     # Privileged Intent
     my_intents.message_content                  = True      # Privileged Intent
-    my_intents.messages                         = False
+    my_intents.messages                         = True
     my_intents.moderation                       = False
     my_intents.presences                        = False     # Privileged Intent
     my_intents.reactions                        = False

@@ -5,17 +5,20 @@ from config.intents import get_intents
 
 class GLBot(Bot):
 
-    def __new__(cls):
+    def __new__(cls, token):
         if not hasattr(cls, 'instance'):
             cls.instance = super(GLBot, cls).__new__(cls)
         return cls.instance
     
-    def __init__(self):
+    def __init__(self, token):
         super(GLBot, self).__init__(
             command_prefix= '/',
-            intents= get_intents()
+            intents= get_intents(),
             )
+        self.token = token
     
     async def on_ready(self):
         print('successfully logged in')
 
+    def launch(self):
+        self.run(self.token)

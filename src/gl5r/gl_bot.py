@@ -17,6 +17,7 @@ class GLBot(Bot):
             )
         self.token = token
     
+    # note: remove this if no more useful functionality comes along for on_ready
     async def on_ready(self):
         print('successfully logged in')
 

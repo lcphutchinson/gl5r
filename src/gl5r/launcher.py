@@ -1,8 +1,8 @@
 # pre-doc: configure and verify proper function of system components from this script, then launch the bot.
+import asyncio
 from config.global_settings import GlobalSettings
-from mongoio.db_manager import DBManager 
-from cogs.testcog import TestCog            # testing
-import asyncio                              # testing
+from mongoio.db_manager import DBManager
+from cogs.cogsuite import Cogsuite 
 from gl_bot import GLBot
 
 def main():
@@ -14,8 +14,8 @@ def main():
     this_db     = DBManager(my_uri)
     this_bot    = GLBot(my_token)
     
-    my_cog      = TestCog()
-    asyncio.run(this_bot.add_cog(my_cog))
+    my_cogs     = Cogsuite(this_bot)
+    asyncio.run(my_cogs.register_all())
 
     this_bot.launch()
 

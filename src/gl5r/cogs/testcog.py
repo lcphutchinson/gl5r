@@ -12,9 +12,8 @@ class TestCog(commands.Cog):
     def __init__(self):
         super(TestCog, self).__init__()
 
+    # note: this format can't be used for ui-supported slash commands.
     @commands.command()
     async def test(self, ctx):
-        print("event fired!")
         await ctx.send("This was a test!")
 
-    

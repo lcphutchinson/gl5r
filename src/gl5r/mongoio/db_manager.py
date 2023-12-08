@@ -12,3 +12,11 @@ class DBManager(AsyncIOMotorClient):
         super(DBManager, self).__init__()
         self.uri        = uri
         self.ServerApi  = ServerApi("1")
+
+    # note: basic server connection confirmed--proper query structure needs building
+    async def ping_server(self):
+        try:
+            self.admin.command('ping')
+            print('ping operation successful')
+        except Exception as e:
+            print(e)

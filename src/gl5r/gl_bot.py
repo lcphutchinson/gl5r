@@ -3,6 +3,8 @@
 from discord.ext.commands.bot import Bot
 from config.intents import get_intents
 
+from discord.app_commands import CommandTree #testing
+
 class GLBot(Bot):
 
     def __new__(cls, token):
@@ -13,13 +15,14 @@ class GLBot(Bot):
     def __init__(self, token):
         super(GLBot, self).__init__(
             command_prefix= '/',
-            intents= get_intents(),
+            intents= get_intents()
             )
         self.token = token
     
     # note: remove this if no more useful functionality comes along for on_ready
     async def on_ready(self):
         print('successfully logged in')
+        await self.tree.sync()              # use sync() in on_ready only during early dev
 
     def launch(self):
         self.run(self.token)

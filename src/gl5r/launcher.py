@@ -12,6 +12,7 @@ def main():
     my_uri      = my_settings.get('mongo_uri')
     
     this_db     = DBManager(my_uri)
+    #this_db.validate()
     this_bot    = GLBot(my_token)
     
     my_cogs     = Cogsuite(this_bot)

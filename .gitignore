@@ -1,10 +1,11 @@
-src/gl5r/config/.env
+src/gl5r/resources/.env
 src/gl5r/mongoio/dbcore.py
 src/gl5r/mongoio/mongotest.py
+
 bin/__pycache__
 src/gl5r/__pycache__
 src/gl5r/cogs/__pycache__
-src/gl5r/config/__pycache__
+src/gl5r/resources/__pycache__
 src/gl5r/discordio/__pycache__
 src/gl5r/mongoio/__pycache__
 src/gl5r/resolver/__pycache__

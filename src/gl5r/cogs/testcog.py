@@ -1,8 +1,8 @@
-# pre-doc: prototype cog for non-slash user test commands: decontextualized
-# skill checks, manual rolls, and anything outside of normal command parameters. 
-from discord.ext.commands import GroupCog
-from discord import app_commands
+# pre-doc: prototype cog for early development of user commands; will be left in
+# for users to test resolver actions without a scene structure in place. 
 from discord import Interaction
+from discord.app_commands import command
+from discord.ext.commands import GroupCog
 
 class TestCog(GroupCog, 
               group_name='t', 
@@ -16,9 +16,10 @@ class TestCog(GroupCog,
     def __init__(self):
         super(TestCog, self).__init__()
 
-    # note: this format can't be used for ui-supported slash commands.
-    @app_commands.command(name='truetest', description='a junk command for testing functionality')
+    @command(name='junk', description='a junk command for testing functionality')
     async def test(self, int : Interaction):
         await int.response.send_message("This was a test!")
 
-    
+    @command(name='roller', description='Manually call the dice roller')
+    async def roll(self, rings : int, skills: int):   
+        pass

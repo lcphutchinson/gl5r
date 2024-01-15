@@ -1,6 +1,6 @@
 # pre-doc: configure and verify proper function of system components from this script, then launch the bot.
 import asyncio
-from config.global_settings import GlobalSettings
+from resources.global_settings import GlobalSettings
 from mongoio.db_manager import DBManager
 from cogs.cogsuite import Cogsuite 
 from gl_bot import GLBot

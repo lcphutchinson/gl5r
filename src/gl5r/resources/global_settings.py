@@ -1,3 +1,4 @@
+# pre-doc: compartmentalized storage for environment variables
 from dotenv import load_dotenv
 from os import environ as env
 

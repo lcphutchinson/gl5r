@@ -1,7 +1,7 @@
 # pre-doc: handle pre-launch configurations that require modification of the Bot object here,
 # as well as operations like cog registration that are best handled asyncronously.
 from discord.ext.commands.bot import Bot
-from config.intents import get_intents
+from resources.intents import get_intents
 
 from discord.app_commands import CommandTree #testing
 

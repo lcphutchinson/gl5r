@@ -20,3 +20,6 @@ class DBManager(AsyncIOMotorClient):
             print('ping operation successful')
         except Exception as e:
             print(e)
+
+    async def get_user(self, user : str):
+        pass

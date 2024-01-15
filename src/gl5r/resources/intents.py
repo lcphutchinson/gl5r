@@ -1,8 +1,9 @@
+# pre-doc: a full switchboard of intents used by Discord--abstracted as a script for easy customization
 from discord import Intents
 
 def get_intents():
     
-    my_intents = Intents.default()
+    my_intents = Intents.none()
     my_intents.auto_moderation                  = False
     my_intents.auto_moderation_configuration    = False
     my_intents.auto_moderation_execution        = False

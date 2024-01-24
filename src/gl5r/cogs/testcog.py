@@ -6,7 +6,8 @@ from discord.ext.commands import GroupCog
 
 class TestCog(GroupCog, 
               group_name='t', 
-              group_description='Test Commands'):
+              group_description='Test Commands'
+              ):
 
     def __new__(cls):
         if not hasattr(cls, 'instance'):
@@ -22,4 +23,4 @@ class TestCog(GroupCog,
 
     @command(name='roller', description='Manually call the dice roller')
     async def roll(self, rings : int, skills: int):   
-        pass
+        pass # use this command to test the resolver module

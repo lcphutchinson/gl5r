@@ -1,4 +1,4 @@
-#pre-doc: command group governing lookup calls
+#pre-doc: command group governing lookup calls; seat of the Compendium service.
 from discord.app_commands import command
 from discord.ext.commands import GroupCog
 

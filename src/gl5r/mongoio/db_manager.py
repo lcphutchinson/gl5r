@@ -10,8 +10,10 @@ class DBManager(AsyncIOMotorClient):
     
     def __init__(self, uri):
         super(DBManager, self).__init__()
+        self.db = self.get_database('gl5r')
         self.ServerApi  = ServerApi("1")
-        self.uri        = uri        
+        self.uri        = uri
+        self.user_cache = dict()       
  
     # note: basic server connection confirmed--proper query structure needs building
     async def ping_server(self):
@@ -22,4 +24,9 @@ class DBManager(AsyncIOMotorClient):
             print(e)
 
     async def get_user(self, user : str):
-        pass
+        if user in self.user_cache:
+            return self.user_cache[user]
+        else:
+            pass # fetch the user data from the database
+        # note: if the data isn't found, this is a new user. Run an insert to register.
+        # self.user_cache[user] = doc that was fetched from the db.

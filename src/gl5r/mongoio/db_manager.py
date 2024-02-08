@@ -10,23 +10,24 @@ class DBManager(AsyncIOMotorClient):
     
     def __init__(self, uri : str):
         super(DBManager, self).__init__(uri)
-        self.db         = self.get_database('gl5r')
+        self.db         = self.get_database('gl5r') # replace with dict lookup in GL
         self.ServerApi  = ServerApi("1")
         self.user_cache = dict()       
 
     async def get_user(self, user : str):
         if user in self.user_cache:
             return self.user_cache[user]
-        else:
-            user_id = { '_id': user }
-            try:
-                user_doc = await self.db.users.find_one(user_id)
-                if user_doc:
-                    return user_doc
-                else:
-                    await self.db.users.insert_one(user_id)
-                    self.user_cache[user] = user_id                 # remember to limit cache growth
-                    return user_id
-            except Exception as e:
-                pass # logic for timeouts goes here
-                
+        user_id = { '_id': user }
+        try:
+            user_doc = await self.db.users.find_one(user_id)
+            if user_doc:
+                return user_doc
+            
+            await self.db.users.insert_one(user_id)
+            self.user_cache[user] = user_id                 # remember to limit cache growth
+            return user_id
+        
+        except Exception as e:
+            pass # logic for timeouts goes here
+        
+    

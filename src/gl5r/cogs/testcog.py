@@ -4,6 +4,7 @@ from discord import Interaction
 from discord.app_commands import command
 from discord.ext.commands import GroupCog
 
+
 class TestCog(GroupCog, 
               group_name='t', 
               group_description='Test Commands'
@@ -18,9 +19,9 @@ class TestCog(GroupCog,
         super(TestCog, self).__init__()
 
     @command(name='junk', description='a junk command for testing functionality')
-    async def test(self, int : Interaction):
-        await int.response.send_message("This was a test!")
+    async def test(self, caller : Interaction):
+        await caller.response.send_message("This was a test!", ephemeral=True)
 
     @command(name='roller', description='Manually call the dice roller')
-    async def roll(self, rings : int, skills: int):   
-        pass # use this command to test the resolver module
+    async def roll(self, caller : Interaction, rings : int, skills : int):   
+        await caller.response.send_message("This command is under construction! try back later", ephemeral=True)

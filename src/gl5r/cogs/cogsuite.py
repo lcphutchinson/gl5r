@@ -1,6 +1,7 @@
 # pre-doc: provide logic here for initializing and registering each cog, so that
 # GameLieutenant only needs one call to handle all its cog registration
 from discord.ext.commands.bot import Bot
+from .charcog import CharCog
 from .testcog import TestCog
 
 class Cogsuite():
@@ -13,6 +14,7 @@ class Cogsuite():
     def __init__(self, bot : Bot):
         self.bot = bot
         self.suite = [
+            CharCog(),
             TestCog(),
         ]
         # cogs can be created here as members of a list.

@@ -2,27 +2,25 @@ from discord import SelectOption
 from discord.interactions import Interaction
 from discord.ui import Select, View
 
-class SheetSelect(Select):
+class QZero(Select):
     def __init__(self):
-        these_options=[
-            SelectOption(
-                label='Core Rulebook Sheet',
-                default=True,
-            ),
-            SelectOption(
-                label='Path of Waves Sheet',
-            ),
+        q_zero_options = [
+            SelectOption(label='Core Rulebook Sheet'),
+            SelectOption(label='Path of Waves Sheet'),
         ]
-        super(SheetSelect, self).__init__(
+        super(QZero, self).__init__(
             max_values=1,
             min_values=1,
-            options=these_options,
+            options=q_zero_options,
+            placeholder='Select a Sheet Format',
         )
-
     async def callback(self, caller : Interaction):
-        pass # working on this logic
+        assert self.view is not None
+        view : QPromptBuilder = self.view
+        view.stop()
 
-class SelectorView(View):
-    def __init__(self, selector_type):
-        super(SelectorView, self).__init__()
-        self.add_item(selector_type())
+class QPromptBuilder(View):
+    def __init__(self, q_type):
+        super(QPromptBuilder, self).__init__()
+        self.selector = q_type()
+        self.add_item(self.selector)

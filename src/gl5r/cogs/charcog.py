@@ -3,7 +3,7 @@ from discord.app_commands import command, describe, rename
 from discord.ext.commands import GroupCog
 from discord.interactions import Interaction
 from mongoio.db_manager import DBManager
-import discordio.cc_prompts as cc_prompts
+import discordio.cc_prompts as cc
 
 class CharCog (GroupCog, 
                group_name='c',
@@ -26,11 +26,11 @@ class CharCog (GroupCog,
     @command(name='create', description='create a new, empty character sheet')
     @describe(label='a temporary label for this sheet') 
     async def new_character(self, caller : Interaction, label : str):
-        prompt = cc_prompts.SelectorView(cc_prompts.SheetSelect)
-        await caller.response.send_message('Select a Sheet Format', view=prompt, ephemeral=True)
+        prompt = cc.QPromptBuilder(cc.QZero)
+        await caller.response.send_message('Character Creation', view=prompt, ephemeral=True)
         await prompt.wait()
         print('operation successful')
-        print(prompt.values)
+        print(str(prompt.selector.values[0]))
 
     # slash command frame for easy copypastability 
     # @command(name='', description='')

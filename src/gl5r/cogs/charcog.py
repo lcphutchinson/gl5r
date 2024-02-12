@@ -2,8 +2,8 @@
 from discord.app_commands import command, describe, rename
 from discord.ext.commands import GroupCog
 from discord.interactions import Interaction
+from discordio.cc_prompts import QView
 from mongoio.db_manager import DBManager
-import discordio.cc_prompts as cc
 
 class CharCog (GroupCog, 
                group_name='c',
@@ -25,17 +25,30 @@ class CharCog (GroupCog,
 
     @command(name='create', description='create a new, empty character sheet')
     @describe(label='a temporary label for this sheet') 
-    async def new_character(self, caller : Interaction, label : str):
-        prompt = cc.QPromptBuilder(cc.QZero)
-        await caller.response.send_message('Character Creation', view=prompt, ephemeral=True)
-        await prompt.wait()
-        print('operation successful')
-        print(str(prompt.selector.values[0]))
+    async def new_character(self, call : Interaction, label : str):
+        await call.response.defer(ephemeral=True, thinking=True)
+        prompt = QView({'Question':0})
+        response = await call.followup.send(f'New Character: "%s"' %label, view=prompt, wait=True)
+        timeout : bool = await prompt.wait()
+        await response.delete()
+        if not timeout:
+            call: Interaction = prompt.reply
+            await call.response.defer(ephemeral=True, thinking=True)
+            q_data: dict = {
+                'author': str(call.user.id),
+                'label' : label,
+                'type'  : prompt.selector.values[0]
+            }
+            # some_db_command = some'build_a_db_command'function(q_data)
+            # results = await self.db_link.do_some_command(some_db_command)
+            # await call.followup.send(success_or_failure_msg)
+            print(q_data) #test
+            await call.followup.send('Next steps under construction :thumbsup:')
 
     # slash command frame for easy copypastability 
     # @command(name='', description='')
     # @describe() 
     # @rename()
-    async def nextcommand(source : Interaction):
+    async def nextcommand(call : Interaction):
         pass   
     

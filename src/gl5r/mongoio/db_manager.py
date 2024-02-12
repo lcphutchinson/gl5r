@@ -3,17 +3,16 @@ from pymongo.server_api import ServerApi
 
 class DBManager(AsyncIOMotorClient):
     
-    def __new__(cls, uri : str):
+    def __new__(cls, uri: str):
         if not hasattr(cls, 'instance'):
             cls.instance = super(DBManager, cls).__new__(cls)
         return cls.instance
     
-    def __init__(self, uri : str):
+    def __init__(self, uri: str):
         super(DBManager, self).__init__(uri)
-        self.db         = self.get_database('gl5r') # replace with dict lookup in GL
-        self.ServerApi  = ServerApi("1")
-        self.user_cache = dict()       
+        self.ServerApi  = ServerApi('1')   
 
+    # note: deprecated example method
     async def get_user(self, user : str):
         if user in self.user_cache:
             return self.user_cache[user]

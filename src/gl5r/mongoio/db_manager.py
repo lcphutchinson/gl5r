@@ -1,32 +1,35 @@
+from .cc_record import CCQueryRecord
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo.server_api import ServerApi
 
 class DBManager(AsyncIOMotorClient):
-    
-    def __new__(cls, uri: str):
+    def __new__(cls, uri: str=None):
         if not hasattr(cls, 'instance'):
             cls.instance = super(DBManager, cls).__new__(cls)
+            cls.instance.is_configured = False
         return cls.instance
-    
-    def __init__(self, uri: str):
-        super(DBManager, self).__init__(uri)
-        self.ServerApi  = ServerApi('1')   
 
-    # note: deprecated example method
-    async def get_user(self, user : str):
-        if user in self.user_cache:
-            return self.user_cache[user]
-        user_id = { '_id': user }
+    def __init__(self, uri: str=None):
+        if self.is_configured: return
+        super(DBManager, self).__init__(uri)
+        self.ServerApi  = ServerApi('1')
+        self.is_configured = True
+
+    async def get_cc_query(self, user: int, label: str=None):
+        collection = self.db.get_collection('cc_data')
+        query: dict = {'author': user, 'cc_complete': False}
+        results = {}
         try:
-            user_doc = await self.db.users.find_one(user_id)
-            if user_doc:
-                return user_doc
-            
-            await self.db.users.insert_one(user_id)
-            self.user_cache[user] = user_id                 # remember to limit cache growth
-            return user_id
-        
+            async for doc in collection.find(query):
+                results += doc
         except Exception as e:
-            pass # logic for timeouts goes here
+            print(repr(e))
+        finally:
+            if not results: return None
+            cc_record = CCQueryRecord(results)
+            print(repr(results)) # test
+            
+
+
+
         
-    

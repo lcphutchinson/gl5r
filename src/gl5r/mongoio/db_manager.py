@@ -15,19 +15,18 @@ class DBManager(AsyncIOMotorClient):
         self.ServerApi  = ServerApi('1')
         self.is_configured = True
 
-    async def get_cc_query(self, user: int, label: str=None):
+    async def get_cc_query(self, user: str, label: str=None):
         collection = self.db.get_collection('cc_data')
         query: dict = {'author': user, 'cc_complete': False}
-        results = {}
+        results: list[dict] = []
         try:
             async for doc in collection.find(query):
                 results += doc
         except Exception as e:
             print(repr(e))
-        finally:
-            if not results: return None
-            cc_record = CCQueryRecord(results)
-            print(repr(results)) # test
+            return None
+        return CCQueryRecord(results)
+
             
 
 

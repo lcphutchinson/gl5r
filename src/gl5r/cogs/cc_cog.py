@@ -30,7 +30,7 @@ class CCCog (GroupCog,
     @rename(sheet_label='for')
     async def pull_question(self, call: Interaction, sheet_label: str, question: int=None):
         await call.response.defer(ephemeral=True, thinking=True)
-        caller: str = str(call.user.id) # str for ease of storage
+        caller: str = str(call.user.id)
         cc_query: CCQueryRecord = await self.db_link.get_cc_query(caller)
         if not cc_query:
             # Case issue imminent: Null cc_query can mean no items found OR query failed--fix.

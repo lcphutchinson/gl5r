@@ -1,3 +1,5 @@
+- Note 3/18/24: I have been for some months now closely monitoring my mother's health following a metastatic lung cancer diagnosis rendered around the turn of the year. My time is stretched thinner than ever as I enter a phase of design that will show very little visible progress here (building the final models for my db docs)--so show a little grace if you happen to have reached this repo from a resume link, and consider reviewing the more complete (if considerably worse) code in my academic portfolio.
+
 # GL5R Development Documentation
 
 "Game Lieutenant" is a programmable toolsuite for authors of tabletop roleplaying games operating on the Discord social media platform. Its objective is to deliver four interconnected services--Character Data Storage, Game System Data Storage, Resolver Management, and Scene Management--as defined by "Game Systems" created and customized by authors using the Game Lieutenant web API.

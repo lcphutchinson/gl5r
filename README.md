@@ -1,4 +1,4 @@
-- Note 3/18/24: I have been for some months now closely monitoring my mother's health following a metastatic lung cancer diagnosis rendered around the turn of the year. My time is stretched thinner than ever as I enter a phase of design that will show very little visible progress here (building the final models for my db docs)--so show a little grace if you happen to have reached this repo from a resume link, and consider reviewing the more complete (if considerably worse) code in my academic portfolio.
+- Note 8/15/24: This project has been temporarily suspended while I see to an ongoing family emergency. This Spike, Gl5R, may be archived rather than completed if I determine work on the final Game Lieutenant product can begin without it.
 
 # GL5R Development Documentation
 
